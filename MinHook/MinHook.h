@@ -1,6 +1,6 @@
 /*
  *  MinHook - The Minimalistic API Hooking Library for x64/x86
- *  Copyright (C) 2009-2016 Tsuda Kageyu.
+ *  Copyright (C) 2009-2017 Tsuda Kageyu.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
 
 #pragma once
 
-#if !(defined _M_IX86) && !(defined _M_X64)
+#if !(defined _M_IX86) && !(defined _M_X64) && !(defined __i386__) && !(defined __x86_64__)
     #error MinHook supports only x86 and x64 systems.
 #endif
 
@@ -79,7 +79,10 @@ typedef enum MH_STATUS
     MH_ERROR_MODULE_NOT_FOUND,
 
     // The specified function is not found.
-    MH_ERROR_FUNCTION_NOT_FOUND
+    MH_ERROR_FUNCTION_NOT_FOUND,
+
+    // Failed to create, or to wait for the main mutex.
+    MH_ERROR_MUTEX_FAILURE
 }
 MH_STATUS;
 

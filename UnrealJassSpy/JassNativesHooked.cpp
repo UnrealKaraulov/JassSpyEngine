@@ -15,9 +15,9 @@ void SpyJassLog( const char * format , ... )
 	int lentowrite = strlen( buffer );
 	fwrite( &buffer , lentowrite , 1 , logfile ); fflush( logfile );*/
 	va_list args;
- va_start( args , format );
- vfprintf_s( logfile , format , args );
- va_end( args );
+     va_start( args , format );
+     vfprintf_s( logfile , format , args );
+     va_end( args );
  /*fflush( logfile );*/
 }
 string GetStrID( int id )
@@ -64,7 +64,8 @@ char * ReadJassStringNormal( int JASSSTRING )
 }
 char * ReadJassSID( int JSID )
 {
-	int Convert = GameDll + 0x7EDA90; int GetCurrentJassEnvironment = GameDll + 0x7E0400;
+	int Convert = GameDll + 0x7EDA90; 
+    int GetCurrentJassEnvironment = GameDll + 0x7E0400;
 	char * cRet = NULL;
 	__asm
 	{
